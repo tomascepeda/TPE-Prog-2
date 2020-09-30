@@ -10,17 +10,17 @@ public class Jugador {
 	public Jugador(String nombre) {
 		super();
 		this.nombre = nombre;
+		this.mazo = new Mazo();
 	}
 	
-	public void asignarMazo(Mazo m) {
-		if (mazo == null)
-			mazo = m;
+	public void addCarta(Carta c) {
+		this.mazo.addCarta(c);
 	}
 	
 	public Atributo selectAtributo() {
-		int cant = mazo.getCarta().getAtributos().size();
+		int cant = mazo.getCarta(0).getAtributos().size();
 		int random = (int) Math.floor((Math.random()*cant) + 1);
-		return mazo.getCarta().getAtributos().get(random);
+		return mazo.getCarta(0).getAtributos().get(random);
 	}
 
 }

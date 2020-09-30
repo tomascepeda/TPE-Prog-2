@@ -1,6 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Mazo {
 	
@@ -18,6 +19,7 @@ public class Mazo {
 		}
 		if (!repetida)
 			cartas.add(c);
+		barajarCartas();
 	}
 	
 	public void removeCarta(Carta c) {
@@ -27,8 +29,16 @@ public class Mazo {
 		}
 	}
 	
-	public Carta getCarta() {
-		return cartas.get(0);
+	public Carta getCarta(int index) {
+		return cartas.get(index);
+	}
+	
+	private void barajarCartas() {
+		Collections.shuffle(cartas);
+	}
+	
+	public int size() {
+		return cartas.size();
 	}
 
 }
