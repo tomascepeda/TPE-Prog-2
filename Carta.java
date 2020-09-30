@@ -33,12 +33,18 @@ public class Carta {
 		return (ArrayList<Atributo>) atributos.clone();
 	}
 	
+	@Override
 	public boolean equals(Object o) {
 		ArrayList<Atributo> atributos_aux = ((Carta) o).getAtributos();
 		if (this.getNombre().equals(((Carta) o).getNombre()) && this.atributos.containsAll(atributos_aux))
 			return true;
 		else
 			return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Carta nombre=" + nombre + ", atributos=" + atributos;
 	}
 	
 }//class

@@ -18,5 +18,10 @@ public class Atributo {
 	public int getValor() {
 		return valor;
 	}
+	
+	@Override
+	public String toString() {
+		return "Atributo nombre=" + nombre + ", valor=" + valor;
+	}
 
 }

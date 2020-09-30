@@ -3,8 +3,10 @@ package TPE;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("aca van las instancias solamente");
+
+		String mazoPath = "./superheroes.json";	//esto nos varia a cada uno
+		VisorMazo.mostrarMazo(mazoPath);
+	
 	}
 
 }
