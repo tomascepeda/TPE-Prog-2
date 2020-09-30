@@ -12,13 +12,19 @@ public class Mazo {
 	}
 	
 	public void addCarta(Carta c) {
-		boolean repetida = false;
-		for (Carta i : cartas) {
-			if (i.equals(c))
-				repetida = true;
-		}
-		if (!repetida)
+		if(cartas.size() == 0) {
 			cartas.add(c);
+		}else {
+			boolean repetida = false;
+			for (Carta i : cartas) {
+				if (i.equals(c))
+					repetida = true;
+			} // guarda un boolean 
+			
+			if (!repetida) // && condicion nueva
+				// TODO comprobar
+				cartas.add(c);
+		}
 		barajarCartas();
 	}
 	
