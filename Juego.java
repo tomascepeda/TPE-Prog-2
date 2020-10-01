@@ -53,9 +53,15 @@ public class Juego {
 	}
 	
 	public void jugar(Jugador j1, Jugador j2, int rondas) {
+		// Prueba solamente.
+		/*
+		if(!mazo.isPar()) {
+			System.out.println("No se puede jugar no es par");
+		}
+		*/
 		Jugador ganador = null;
 		int i = 0;
-		while (i<rondas && ganador == null) {
+		while (i<rondas && ganador == null && mazo.isPar()) {
 			i++;
 			System.out.println("---- Ronda " + i + " ----");
 			ganador = jugarRonda(j1,j2);

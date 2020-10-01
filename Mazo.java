@@ -30,7 +30,9 @@ public class Mazo {
 	public void removeCarta(Carta c) {
 		cartas.remove(c);
 	}
-	
+	public boolean isPar() {
+		return(this.cartas.size()%2==0); // el 0 puede que sea constante..
+	}
 	public Carta getCarta(int index) {
 		try {
 			return cartas.get(index);
@@ -40,6 +42,7 @@ public class Mazo {
 	}
 	
 	private void barajarCartas() {
+		if(this.isPar())
 		Collections.shuffle(cartas);
 	}
 	
