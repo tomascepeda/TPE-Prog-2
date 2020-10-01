@@ -23,6 +23,10 @@ public class Jugador {
 		mazo.addCarta(c);
 	}
 	
+	public void removeCarta(Carta c) {
+		mazo.removeCarta(c);
+	}
+	
 	public Atributo selectAtributo() {
 		int cant = mazo.getCarta(indiceCarta).getAtributos().size();
 		int random = (int) Math.floor((Math.random()*cant) + 1);
@@ -32,6 +36,10 @@ public class Jugador {
 	public Carta getCarta() {
 		this.indiceCarta++;
 		return mazo.getCarta(indiceCarta);
+	}
+	
+	public int cantCartas() {
+		return mazo.size();
 	}
 
 }

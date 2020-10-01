@@ -10,7 +10,7 @@ public class Main {
 		Juego juego = new Juego(j1, j2);
 		
 		juego.repartirCartas();
-		juego.jugarRonda(j1, j2);
+		juego.jugar(j1, j2, 3);
 		
 		/*
 		1. el jugador que juega cada ronda,

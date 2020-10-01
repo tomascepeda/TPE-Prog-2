@@ -21,22 +21,22 @@ public class Mazo {
 					repetida = true;
 			} // guarda un boolean 
 			
-			if (!repetida) // && condicion nueva
-				// TODO comprobar
+			if (!repetida && c.tieneAtributos(cartas.get(0)))
 				cartas.add(c);
 		}
 		barajarCartas();
 	}
 	
 	public void removeCarta(Carta c) {
-		for (Carta i : cartas) {
-			if (i.equals(c))
-				cartas.remove(i);
-		}
+		cartas.remove(c);
 	}
 	
 	public Carta getCarta(int index) {
-		return cartas.get(index);
+		try {
+			return cartas.get(index);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	private void barajarCartas() {

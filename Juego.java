@@ -23,26 +23,57 @@ public class Juego {
 		}
 	}
 	
-	public Jugador jugarRonda(Jugador actual, Jugador adversario) {
+	private Jugador jugarRonda(Jugador actual, Jugador adversario) {
 		Carta cartaJugadorActual = actual.getCarta();
 		Carta cartaJugadorAdversario = actual.getCarta();
-		//System.out.println(cartaJugadorActual.tieneAtributos(cartaJugadorAdversario));
-		Atributo atributo = actual.selectAtributo();
-		System.out.println("El jugador " + actual.getNombre() + " selecciona competir por el atributo: " + atributo.getNombre());
-		System.out.println("La carta de " + actual.getNombre() + " es " + cartaJugadorActual.getNombre() + " con " + atributo.getNombre() + " " +cartaJugadorActual.getValor(atributo));
-		System.out.println("La carta de " + adversario.getNombre() + " es " + cartaJugadorAdversario.getNombre() + " con " + atributo.getNombre() + " " + cartaJugadorAdversario.getValor(atributo));
-		if (cartaJugadorActual.getValor(atributo) > cartaJugadorAdversario.getValor(atributo)) {
-			System.out.println("Gana la ronda " + actual.getNombre());
-			return actual;
-		}else if (cartaJugadorActual.getValor(atributo) < cartaJugadorAdversario.getValor(atributo)) {
-			System.out.println("Gana la ronda " + adversario.getNombre());
-			return adversario;
-		}else {
-			System.out.println("empate");
+		try {
+			Atributo atributo = actual.selectAtributo();
+			System.out.println("El jugador " + actual.getNombre() + " selecciona competir por el atributo: " + atributo.getNombre());
+			System.out.println("La carta de " + actual.getNombre() + " es " + cartaJugadorActual.getNombre() + " con " + atributo.getNombre() + " " +cartaJugadorActual.getValor(atributo));
+			System.out.println("La carta de " + adversario.getNombre() + " es " + cartaJugadorAdversario.getNombre() + " con " + atributo.getNombre() + " " + cartaJugadorAdversario.getValor(atributo));
+			if (cartaJugadorActual.getValor(atributo) > cartaJugadorAdversario.getValor(atributo)) {
+				System.out.println("Gana la ronda " + actual.getNombre());
+				actual.addCarta(cartaJugadorAdversario);
+				adversario.removeCarta(cartaJugadorAdversario);
+			}else if (cartaJugadorActual.getValor(atributo) < cartaJugadorAdversario.getValor(atributo)) {
+				System.out.println("Gana la ronda " + adversario.getNombre());
+				adversario.addCarta(cartaJugadorActual);
+				actual.removeCarta(cartaJugadorActual);
+			}else {
+				System.out.println("empate");
+			}
 			return null;
+		} catch (Exception e) {
+			if (cartaJugadorActual == null) {
+				return adversario;
+			}else {
+				return actual;
+			}
 		}
 	}
 	
+	public void jugar(Jugador j1, Jugador j2, int rondas) {
+		Jugador ganador = null;
+		int i = 0;
+		while (i<rondas && ganador == null) {
+			i++;
+			System.out.println("---- Ronda " + i + " ----");
+			ganador = jugarRonda(j1,j2);
+		}
+		if (ganador != null) {
+			System.out.println("---- FIN DEL JUEGO ----");
+			System.out.println("GANO " + ganador.getNombre());			
+		}else if (j1.cantCartas() > j2.cantCartas()) {
+			System.out.println("---- FIN DEL JUEGO ----");
+			System.out.println("GANO " + j1.getNombre());
+		}else if (j1.cantCartas() < j2.cantCartas()) {
+			System.out.println("---- FIN DEL JUEGO ----");
+			System.out.println("GANO " + j2.getNombre());
+		}else {
+			System.out.println("---- FIN DEL JUEGO ----");
+			System.out.println("EMPATE");
+		}
+	}
 	
 	
 	
