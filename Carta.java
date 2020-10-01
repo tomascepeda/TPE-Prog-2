@@ -47,4 +47,19 @@ public class Carta {
 		return "Carta nombre=" + nombre + ", atributos=" + atributos;
 	}
 	
+	public boolean tieneAtributos(Carta c) {
+		ArrayList<String> thisNombreAtributos = new ArrayList<String>();
+		for (Atributo i : atributos) {
+			thisNombreAtributos.add(i.getNombre());
+		}
+		ArrayList<String> otherNombreAtributos = new ArrayList<String>();
+		for (Atributo i : atributos) {
+			otherNombreAtributos.add(i.getNombre());
+		}
+		if(thisNombreAtributos.containsAll(otherNombreAtributos))
+			return true;
+		else
+			return false;
+	}
+	
 }//class

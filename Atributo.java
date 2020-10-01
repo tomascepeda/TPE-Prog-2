@@ -1,6 +1,6 @@
 package TPE;
 
-public class Atributo {
+public class Atributo{
 	
 	private String nombre;
 	private int valor;

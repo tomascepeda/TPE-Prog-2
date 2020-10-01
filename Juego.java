@@ -26,6 +26,7 @@ public class Juego {
 	public Jugador jugarRonda(Jugador actual, Jugador adversario) {
 		Carta cartaJugadorActual = actual.getCarta();
 		Carta cartaJugadorAdversario = actual.getCarta();
+		//System.out.println(cartaJugadorActual.tieneAtributos(cartaJugadorAdversario));
 		Atributo atributo = actual.selectAtributo();
 		System.out.println("El jugador " + actual.getNombre() + " selecciona competir por el atributo: " + atributo.getNombre());
 		System.out.println("La carta de " + actual.getNombre() + " es " + cartaJugadorActual.getNombre() + " con " + atributo.getNombre() + " " +cartaJugadorActual.getValor(atributo));
