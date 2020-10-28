@@ -1,5 +1,7 @@
 package TPE;
 
+import java.util.ArrayList;
+
 public class Juego {
 	
 	private Jugador j1, j2;
@@ -17,68 +19,65 @@ public class Juego {
 	// diferenciar bien las responsabilidades de las clases
 	
 	public void repartirCartas() {
-		for (int i = 0; i < mazo.size() - 1; i++) {
+		for (int i = 0; i < mazo.size() + 2; i = i + 2) {
 			j1.addCarta(mazo.getCarta(i));
-			j2.addCarta(mazo.getCarta(i++));
+			j2.addCarta(mazo.getCarta(i+1));
 		}
 	}
-	
-	private Jugador jugarRonda(Jugador actual, Jugador adversario) {
-		Carta cartaJugadorActual = actual.getCarta();
-		Carta cartaJugadorAdversario = actual.getCarta();
-		try {
-			Atributo atributo = actual.selectAtributo();
-			System.out.println("El jugador " + actual.getNombre() + " selecciona competir por el atributo: " + atributo.getNombre());
-			System.out.println("La carta de " + actual.getNombre() + " es " + cartaJugadorActual.getNombre() + " con " + atributo.getNombre() + " " +cartaJugadorActual.getValor(atributo));
-			System.out.println("La carta de " + adversario.getNombre() + " es " + cartaJugadorAdversario.getNombre() + " con " + atributo.getNombre() + " " + cartaJugadorAdversario.getValor(atributo));
-			if (cartaJugadorActual.getValor(atributo) > cartaJugadorAdversario.getValor(atributo)) {
-				System.out.println("Gana la ronda " + actual.getNombre());
-				actual.addCarta(cartaJugadorAdversario);
-				adversario.removeCarta(cartaJugadorAdversario);
-			}else if (cartaJugadorActual.getValor(atributo) < cartaJugadorAdversario.getValor(atributo)) {
-				System.out.println("Gana la ronda " + adversario.getNombre());
-				adversario.addCarta(cartaJugadorActual);
-				actual.removeCarta(cartaJugadorActual);
-			}else {
-				System.out.println("empate");
-			}
-			return null;
-		} catch (Exception e) {
-			if (cartaJugadorActual == null) {
-				return adversario;
-			}else {
-				return actual;
-			}
-		}
-	}
-	
-	public void jugar(Jugador j1, Jugador j2, int rondas) {
-		// Prueba solamente.
-		/*
-		if(!mazo.isPar()) {
-			System.out.println("No se puede jugar no es par");
-		}
-		*/
-		Jugador ganador = null;
+	public ArrayList<String> jugar(Jugador jugador1, Jugador jugador2, int rondas) {
+		ArrayList<String> text = new ArrayList<String>();
+		Jugador ganador = null; // TE DICE QUIEN GANO EL JUEGO
 		int i = 0;
-		while (i<rondas && ganador == null && mazo.isPar()) {
+		Jugador j1 = jugador1;
+		Jugador j2 = jugador2;
+		Jugador ganadorRonda = j1;
+		while ((i<rondas && ganador == null) && (j1.getCarta() != null && j2.getCarta() != null)){
+			Carta cartaJugador1 = j1.getCarta();
+			Carta cartaJugador2 = j2.getCarta();
 			i++;
-			System.out.println("---- Ronda " + i + " ----");
-			ganador = jugarRonda(j1,j2);
+			text.add("---- Ronda " + i + " ----");
+			try {
+				Atributo atributo = ganadorRonda.selectAtributo();
+				text.add("El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo: " + atributo.getNombre());
+				text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributo.getNombre() + " " +cartaJugador1.getValor(atributo));
+				text.add("La carta de " + j2.getNombre() + " es " + cartaJugador2.getNombre() + " con " + atributo.getNombre() + " " + cartaJugador2.getValor(atributo));
+				
+				if (cartaJugador1.getValor(atributo) > cartaJugador2.getValor(atributo)) {
+					j1.addCarta(cartaJugador2);
+					j2.removeCarta(cartaJugador2);
+					ganadorRonda = j1;
+					text.add("Gana la ronda " + ganadorRonda.getNombre() + " y queda con " + ganadorRonda.cantCartas() + " cartas (" + j2.getNombre() + " posee ahora " + j2.cantCartas() + " cartas)");
+				}else if (cartaJugador1.getValor(atributo) < cartaJugador2.getValor(atributo)) {
+					j2.addCarta(cartaJugador1);
+					j1.removeCarta(cartaJugador1);
+					text.add("Gana la ronda " + j2.getNombre() + " y queda con " + j2.cantCartas() + " cartas (" + j1.getNombre() + " posee ahora " + j1.cantCartas() + " cartas)");
+					ganadorRonda = j2;
+                    				
+				}else {
+					text.add("empate");
+				}
+			} catch (Exception e) {
+				if (cartaJugador1 == null) {
+					ganador = j2;
+				}else {
+					ganador = j1;
+				}
+			}
 		}
 		if (ganador != null) {
-			System.out.println("---- FIN DEL JUEGO ----");
-			System.out.println("GANO " + ganador.getNombre());			
+			text.add("---- FIN DEL JUEGO ----");
+			text.add("GANO " + ganador.getNombre());			
 		}else if (j1.cantCartas() > j2.cantCartas()) {
-			System.out.println("---- FIN DEL JUEGO ----");
-			System.out.println("GANO " + j1.getNombre());
+			text.add("---- FIN DEL JUEGO ----");
+			text.add("GANO " + j1.getNombre());
 		}else if (j1.cantCartas() < j2.cantCartas()) {
-			System.out.println("---- FIN DEL JUEGO ----");
-			System.out.println("GANO " + j2.getNombre());
+			text.add("---- FIN DEL JUEGO ----");
+			text.add("GANO " + j2.getNombre());
 		}else {
-			System.out.println("---- FIN DEL JUEGO ----");
-			System.out.println("EMPATE");
+			text.add("---- FIN DEL JUEGO ----");
+			text.add("EMPATE");
 		}
+		return text;
 	}
 	
 	

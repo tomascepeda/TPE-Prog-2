@@ -1,17 +1,21 @@
 package TPE;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
 
-		Jugador j1 = new Jugador("yirrap");
-		Jugador j2 = new Jugador("marano");
+		Jugador j1 = new Jugador("Jere");
+		Jugador j2 = new Jugador("Tomas");
 		
 		Juego juego = new Juego(j1, j2);
 		
 		juego.repartirCartas();
-		juego.jugar(j1, j2, 3);
-		
+		ArrayList<String> resultados = (ArrayList<String>) juego.jugar(j1, j2, 1000).clone();
+		for (String i : resultados) {
+			System.out.println(i.toString());
+		}
 		/*
 		1. el jugador que juega cada ronda,
 		2. el atributo seleccionado para competir,

@@ -12,27 +12,26 @@ public class Mazo {
 	}
 	
 	public void addCarta(Carta c) {
-		if(cartas.size() == 0) {
+		/*if(cartas.size() == 0) {
+		*/	
+		if (c != null)
 			cartas.add(c);
-		}else {
+		/*}else {
 			boolean repetida = false;
 			for (Carta i : cartas) {
 				if (i.equals(c))
 					repetida = true;
 			} // guarda un boolean 
-			
 			if (!repetida && c.tieneAtributos(cartas.get(0)))
 				cartas.add(c);
 		}
-		barajarCartas();
+		barajarCartas(); */
 	}
 	
 	public void removeCarta(Carta c) {
 		cartas.remove(c);
 	}
-	public boolean isPar() {
-		return(this.cartas.size()%2==0); // el 0 puede que sea constante..
-	}
+	
 	public Carta getCarta(int index) {
 		try {
 			return cartas.get(index);
@@ -42,7 +41,6 @@ public class Mazo {
 	}
 	
 	private void barajarCartas() {
-		if(this.isPar())
 		Collections.shuffle(cartas);
 	}
 	

@@ -7,6 +7,7 @@ public class Jugador {
 	private String nombre;
 	private Mazo mazo;
 	private int indiceCarta;
+//	private Criterio CriterioEstrategia;
 	
 	public Jugador(String nombre) {
 		super();
@@ -20,7 +21,8 @@ public class Jugador {
 	}
 	
 	public void addCarta(Carta c) {
-		mazo.addCarta(c);
+		if (c != null)
+			mazo.addCarta(c);
 	}
 	
 	public void removeCarta(Carta c) {
@@ -35,11 +37,23 @@ public class Jugador {
 	
 	public Carta getCarta() {
 		this.indiceCarta++;
-		return mazo.getCarta(indiceCarta);
+		Carta aux = mazo.getCarta(indiceCarta);
+		if(aux == null) {
+			this.indiceCarta = 0;
+			return mazo.getCarta(indiceCarta);
+		}else
+			return aux;
 	}
 	
 	public int cantCartas() {
 		return mazo.size();
+	}
+
+	@Override
+	public boolean equals(Object j) {
+		
+		return (this.getNombre().equals(((Jugador) j).getNombre())); // y que las cartas en posesion sean las mismas
+
 	}
 
 }
