@@ -23,5 +23,4 @@ public class Atributo{
 	public String toString() {
 		return "Atributo nombre=" + nombre + ", valor=" + valor;
 	}
-
 }

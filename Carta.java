@@ -12,6 +12,28 @@ public class Carta {
 		this.nombre = nombre;
 		atributos = new ArrayList<Atributo>();
 	}
+	// preguntar si hay que derivar mas.
+	
+	
+	public int getValor(String nombreAtributo) {
+		int valor = 0;
+		for (Atributo atributo : atributos) {
+			if(atributo.getNombre().equals(nombreAtributo)) // se supone que siempre cumple
+				valor = atributo.getValor();
+		}
+		return valor;
+	}
+	// dado el nombre del atributo de su estrategia busca el atributo para selecionarlo.
+	public int getAtributo(String nombreAtributo) {
+		
+		int buscado = 0;
+		for (int i = 0; i < atributos.size(); i++) {
+			if(atributos.get(i).getNombre().equals(nombreAtributo));
+			buscado = atributos.get(i).getValor();			
+		}
+		return buscado;
+	}
+	
 	
 	public void addAtributo(Atributo a) {
 		atributos.add(a);

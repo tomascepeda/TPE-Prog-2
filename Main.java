@@ -2,12 +2,22 @@ package TPE;
 
 import java.util.ArrayList;
 
+import Estrategias.*;
+
 public class Main {
 
 	public static void main(String[] args) {
 
-		Jugador j1 = new Jugador("Jere");
-		Jugador j2 = new Jugador("Tomas");
+	
+		Estrategia es1 = new EstrategiaTimbero("Timbero");
+		Estrategia es2 = new EstrategiaAmbisioso("Ambisioso");
+		
+		
+		Jugador j1 = new Jugador("Jere",es1);
+		Jugador j2 = new Jugador("Tomas",es2);
+		
+		
+	
 		
 		Juego juego = new Juego(j1, j2);
 		

@@ -2,18 +2,21 @@ package TPE;
 
 import java.util.ArrayList;
 
+import Estrategias.Estrategia; // package estrategias
+
 public class Jugador {
 	
 	private String nombre;
 	private Mazo mazo;
 	private int indiceCarta;
-//	private Criterio CriterioEstrategia;
+	private Estrategia estrategia;
 	
-	public Jugador(String nombre) {
-		super();
+	public Jugador(String nombre, Estrategia estrategia) {
 		this.nombre = nombre;
 		this.mazo = new Mazo();
 		this.indiceCarta = -1;
+		this.estrategia = estrategia;
+		
 	}
 	
 	public String getNombre() {
@@ -28,11 +31,17 @@ public class Jugador {
 	public void removeCarta(Carta c) {
 		mazo.removeCarta(c);
 	}
-	
+	// Horrible
+	/*
 	public Atributo selectAtributo() {
 		int cant = mazo.getCarta(indiceCarta).getAtributos().size();
 		int random = (int) Math.floor((Math.random()*cant) + 1);
 		return mazo.getCarta(0).getAtributos().get(random - 1); // revisar
+	}
+	*/ 
+	// se puede cambiar en cualquier momento
+	public String elegirAtributo(Carta ca) {
+		return this.estrategia.obtenerEstrategia(ca);
 	}
 	
 	public Carta getCarta() {

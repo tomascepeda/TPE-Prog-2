@@ -37,17 +37,24 @@ public class Juego {
 			i++;
 			text.add("---- Ronda " + i + " ----");
 			try {
-				Atributo atributo = ganadorRonda.selectAtributo();
-				text.add("El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo: " + atributo.getNombre());
-				text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributo.getNombre() + " " +cartaJugador1.getValor(atributo));
-				text.add("La carta de " + j2.getNombre() + " es " + cartaJugador2.getNombre() + " con " + atributo.getNombre() + " " + cartaJugador2.getValor(atributo));
+				// no seria mas necesario ahora con el nombre alcanza, evitas pasar el objeto entero.
+				//Atributo atributo = ganadorRonda.selectAtributo();
 				
-				if (cartaJugador1.getValor(atributo) > cartaJugador2.getValor(atributo)) {
+				
+	
+				String atributoSelecionado = ganadorRonda.elegirAtributo(ganadorRonda.getCarta());
+				
+				
+				text.add("El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo: " + atributoSelecionado);
+				text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributoSelecionado + " " +cartaJugador1.getValor(atributoSelecionado));
+				text.add("La carta de " + j2.getNombre() + " es " + cartaJugador2.getNombre() + " con " + atributoSelecionado + " " + cartaJugador2.getValor(atributoSelecionado));
+				
+				if (cartaJugador1.getValor(atributoSelecionado) > cartaJugador2.getValor(atributoSelecionado)) {
 					j1.addCarta(cartaJugador2);
 					j2.removeCarta(cartaJugador2);
 					ganadorRonda = j1;
 					text.add("Gana la ronda " + ganadorRonda.getNombre() + " y queda con " + ganadorRonda.cantCartas() + " cartas (" + j2.getNombre() + " posee ahora " + j2.cantCartas() + " cartas)");
-				}else if (cartaJugador1.getValor(atributo) < cartaJugador2.getValor(atributo)) {
+				}else if (cartaJugador1.getValor(atributoSelecionado) < cartaJugador2.getValor(atributoSelecionado)) {
 					j2.addCarta(cartaJugador1);
 					j1.removeCarta(cartaJugador1);
 					text.add("Gana la ronda " + j2.getNombre() + " y queda con " + j2.cantCartas() + " cartas (" + j1.getNombre() + " posee ahora " + j1.cantCartas() + " cartas)");
