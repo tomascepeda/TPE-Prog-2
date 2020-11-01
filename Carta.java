@@ -95,18 +95,27 @@ public class Carta {
 	}
 	
 	public boolean tieneAtributos(Carta c) {
-		ArrayList<String> thisNombreAtributos = new ArrayList<String>();
-		for (Atributo i : atributos) {
+		/*ArrayList<String> thisNombreAtributos = new ArrayList<String>();
+		for (Atributo i : atributos) {	PEDAZO DE BOLUDO AGREGASTE LOS MISMOS ATIBUTOS A LOS 2 ARREGLOS
 			thisNombreAtributos.add(i.getNombre());
 		}
 		ArrayList<String> otherNombreAtributos = new ArrayList<String>();
-		for (Atributo i : atributos) {
+		for (Atributo i : atributos) {	PEDAZO DE BOLUDO AGREGASTE LOS MISMOS ATIBUTOS A LOS 2 ARREGLOS
 			otherNombreAtributos.add(i.getNombre());
 		}
 		if(thisNombreAtributos.containsAll(otherNombreAtributos))
 			return true;
 		else
-			return false;
+			return false;*/
+		ArrayList<String> thisNombreAtributos = new ArrayList<String>();
+		for (Atributo i : this.getAtributos()) {
+			thisNombreAtributos.add(i.getNombre());
+		}
+		ArrayList<String> otherNombreAtributos = new ArrayList<String>();
+		for (Atributo s : c.getAtributos()) {
+			otherNombreAtributos.add(s.getNombre());
+		}
+		return thisNombreAtributos.containsAll(otherNombreAtributos);
 	}
 	
 }//class
