@@ -9,8 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 
 	
-		Estrategia es1 = new EstrategiaTimbero("Timbero");
-		Estrategia es2 = new EstrategiaAmbisioso("Ambisioso");
+		Estrategia es1 = new EstrategiaObstinado("Timbero", "fuerza");
+		Estrategia es2 = new EstrategiaTimbero("Timbero");
 		
 		
 		Jugador j1 = new Jugador("Jere",es1);
@@ -21,11 +21,15 @@ public class Main {
 		
 		Juego juego = new Juego(j1, j2);
 		
-		juego.repartirCartas();
-		ArrayList<String> resultados = (ArrayList<String>) juego.jugar(j1, j2, 1000).clone();
-		for (String i : resultados) {
-			System.out.println(i.toString());
+		
+		juego.jugar(j1, j2, 1000);
+		ArrayList<String> log = juego.textoJuego();
+		
+		for (int i = 0; i <log.size(); i++) {
+			System.out.println(log.get(i));
 		}
+		
+		
 		/*
 		1. el jugador que juega cada ronda,
 		2. el atributo seleccionado para competir,

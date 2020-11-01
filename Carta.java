@@ -2,10 +2,15 @@ package TPE;
 
 import java.util.ArrayList;
 
+import Pocimas.Pocima;
+
 public class Carta {
 	
 	private String nombre;
 	private ArrayList<Atributo> atributos;
+	private Pocima pocima;
+	
+	
 	
 	public Carta(String nombre) {
 		super();
@@ -13,6 +18,16 @@ public class Carta {
 		atributos = new ArrayList<Atributo>();
 	}
 	// preguntar si hay que derivar mas.
+	
+
+	public void aplicarPocima(Pocima p) {
+		this.pocima = p;
+		for (Atributo elem : atributos) {
+			elem.aplicarPocima(p);
+		}
+		
+		
+	}
 	
 	
 	public int getValor(String nombreAtributo) {
@@ -23,6 +38,16 @@ public class Carta {
 		}
 		return valor;
 	}
+	public void setValorAtributo(int posicion, int valor) {
+		this.atributos.get(posicion).getValor();
+	}
+	
+	
+	public int getLongitud() {
+		return this.atributos.size();
+	}
+	
+	
 	// dado el nombre del atributo de su estrategia busca el atributo para selecionarlo.
 	public int getAtributo(String nombreAtributo) {
 		

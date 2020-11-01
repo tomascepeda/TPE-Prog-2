@@ -1,5 +1,7 @@
 package TPE;
 
+import Pocimas.Pocima;
+
 public class Atributo{
 	
 	private String nombre;
@@ -18,6 +20,14 @@ public class Atributo{
 	public int getValor() {
 		return valor;
 	}
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+	
+	public void aplicarPocima(Pocima p) {
+		p.aplicar(this);
+	}
+	
 	
 	@Override
 	public String toString() {
