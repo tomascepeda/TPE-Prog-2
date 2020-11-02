@@ -13,8 +13,12 @@ public abstract class Pocima {
 	}
 	
 	
-	public abstract void aplicar(Atributo a);
+	public String getNombre() {
+		return this.nombre;
+	}
 	
+	public abstract Atributo aplicar(Atributo a);
+	public abstract int getValorResultante(int valor);
 	
 	
 

@@ -3,6 +3,8 @@ package TPE;
 import java.util.ArrayList;
 
 import Estrategias.*;
+import Pocimas.Pocima;
+import Pocimas.PocimaValorFijo;
 
 public class Main {
 
@@ -17,12 +19,23 @@ public class Main {
 		Jugador j2 = new Jugador("Tomas",es2);
 		
 		
-	
+	     PocimaValorFijo p1 = new PocimaValorFijo("Pocima fortalecedora", "peso", 1);
+	     PocimaValorFijo p2 = new PocimaValorFijo("Pocima fortalecedora", "peso", 1);
+	     PocimaValorFijo p3 = new PocimaValorFijo("Pocima fortalecedora", "peso", 1);
+	     PocimaValorFijo p4 = new PocimaValorFijo("Pocima fortalecedora", "peso", 1);
 		
+	     
+	     
+	     
 		Juego juego = new Juego(j1, j2);
-		
+		juego.addPocima(p1);
+		juego.addPocima(p2);
+		juego.addPocima(p3);
+		juego.addPocima(p4);
 		
 		juego.jugar(j1, j2, 1000);
+		
+		
 		ArrayList<String> log = juego.textoJuego();
 		
 		for (int i = 0; i <log.size(); i++) {

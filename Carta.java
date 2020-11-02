@@ -16,10 +16,35 @@ public class Carta {
 		super();
 		this.nombre = nombre;
 		atributos = new ArrayList<Atributo>();
+		this.pocima = null;
 	}
-	// preguntar si hay que derivar mas.
 	
 
+	public void setValor(int i) {
+		this.atributos.get(i).setValor(i);
+	}
+	
+	public Carta(String nombre, ArrayList<Atributo> atributos, Pocima pocima) {
+		this.nombre = nombre;
+		this.atributos = atributos;
+		this.pocima = pocima;
+	}
+
+
+
+
+	public void setPocima(Pocima p) {
+		this.pocima = p;
+	}
+	
+	public Pocima getPocima() {
+		return this.pocima;
+	}
+	
+	
+	// preguntar si hay que derivar mas.
+	
+/*
 	public void aplicarPocima(Pocima p) {
 		this.pocima = p;
 		for (Atributo elem : atributos) {
@@ -28,6 +53,22 @@ public class Carta {
 		
 		
 	}
+*/
+	
+	// Calcula como quedaria el atributo cuando se aplica una pocima.
+	// se pasa una copia No el original.
+	public Atributo aplicarPocima(Atributo a) {
+		Atributo atributo;
+		if(pocima != null) {
+			atributo = pocima.aplicar(a);
+		}else {
+			atributo = a;
+		}
+		return atributo;
+	}
+	
+	
+	
 	
 	
 	public int getValor(String nombreAtributo) {
@@ -38,6 +79,9 @@ public class Carta {
 		}
 		return valor;
 	}
+	
+	
+	
 	public void setValorAtributo(int posicion, int valor) {
 		this.atributos.get(posicion).getValor();
 	}
@@ -58,6 +102,18 @@ public class Carta {
 		}
 		return buscado;
 	}
+
+	//obj
+	public Atributo getAtributoObj(String nombreAtributo) {
+	
+		int buscado = 0;
+		for (int i = 0; i < atributos.size(); i++) {
+			if(atributos.get(i).getNombre().equals(nombreAtributo));
+			buscado = atributos.get(i).getValor();			
+		}
+		return atributos.get(buscado);
+	}
+
 	
 	
 	public void addAtributo(Atributo a) {
@@ -95,18 +151,6 @@ public class Carta {
 	}
 	
 	public boolean tieneAtributos(Carta c) {
-		/*ArrayList<String> thisNombreAtributos = new ArrayList<String>();
-		for (Atributo i : atributos) {	PEDAZO DE BOLUDO AGREGASTE LOS MISMOS ATIBUTOS A LOS 2 ARREGLOS
-			thisNombreAtributos.add(i.getNombre());
-		}
-		ArrayList<String> otherNombreAtributos = new ArrayList<String>();
-		for (Atributo i : atributos) {	PEDAZO DE BOLUDO AGREGASTE LOS MISMOS ATIBUTOS A LOS 2 ARREGLOS
-			otherNombreAtributos.add(i.getNombre());
-		}
-		if(thisNombreAtributos.containsAll(otherNombreAtributos))
-			return true;
-		else
-			return false;*/
 		ArrayList<String> thisNombreAtributos = new ArrayList<String>();
 		for (Atributo i : this.getAtributos()) {
 			thisNombreAtributos.add(i.getNombre());

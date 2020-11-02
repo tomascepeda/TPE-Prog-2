@@ -20,7 +20,7 @@ public class Juego {
 		String mazoPath = "./superheroes.json"; // la notacion nos varia a cada uno
 		this.mazo = VisorMazo.armarMazo(mazoPath);
 		this.pocimas = new ArrayList<>();
-		this.repartirCartas();
+		this.pocimas = new ArrayList<Pocima>();
 	}
 	
 	
@@ -43,32 +43,7 @@ public class Juego {
 	// aca va toda la logica propia del juego (main del juego)
 	// diferenciar bien las responsabilidades de las clases
 	
-	public void repartirCartas() {
-		boolean cartaDada = false;
 	
-		for (int i = 0; i <mazo.size(); i++) {
-			
-			if(cartaDada)
-				j1.addCarta(mazo.getCarta(i));
-			else 
-				j2.addCarta(mazo.getCarta(i));	
-			cartaDada = !cartaDada;
-			
-		}
-		//System.out.println(j1.cantCartas()+" "+j2.cantCartas());
-
-		/*
-		 * Alternativa sin usar boolean
-		for (int i = 0; i <mazo.size(); i++) {
-			
-			if(i % 2 == 0)
-				j1.addCarta(mazo.getCarta(i));
-			else 
-				j2.addCarta(mazo.getCarta(i));	
-			cartaDada = !cartaDada;
-		}
-		*/
-	}
 		
 		
 		
@@ -87,6 +62,8 @@ public class Juego {
 			System.out.println(mazo.size());
 		}else {
 			
+			//this.mazo.repartirPocimas(this.pocimas);
+			this.mazo.repartirCartas(j1, j2, this.pocimas);	
 		
 		
 		
@@ -110,8 +87,28 @@ public class Juego {
 				String atributoSelecionado = ganadorRonda.elegirAtributo(ganadorRonda.getCarta());
 				
 				
+				
+	
+				/*				
+	
+				if(cartaJugador1.getPocima() != null) {
+					//cartaJugador1.aplicarPocima()
+					System.out.println("Se aplico pocima "+cartaJugador1.getPocima().getNombre());
+				}
+				
+				if(cartaJugador2.getPocima() != null) {
+					System.out.println("La carta del jugador2 tiene una pocima");
+				}
+				*/
+				
+
+				
 				text.add("El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo: " + atributoSelecionado);
-				text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributoSelecionado + " " +cartaJugador1.getValor(atributoSelecionado));
+				text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributoSelecionado + " " + cartaJugador1.getValor(atributoSelecionado));
+				if(cartaJugador1.getPocima() != null) {
+					text.add("Se aplico pocima " + cartaJugador1.getPocima().getNombre() + ", AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA valor resultante " + cartaJugador1.getPocima().getValorResultante(cartaJugador1.getValor(atributoSelecionado)));
+					//cartaJugador1.getAtributoObj(atributoSelecionado).setValor(cartaJugador1.getPocima().getValorResultante(cartaJugador1.getValor(atributoSelecionado)));
+				}
 				text.add("La carta de " + j2.getNombre() + " es " + cartaJugador2.getNombre() + " con " + atributoSelecionado + " " + cartaJugador2.getValor(atributoSelecionado));
 				
 				if (cartaJugador1.getValor(atributoSelecionado) > cartaJugador2.getValor(atributoSelecionado)) {
@@ -129,6 +126,7 @@ public class Juego {
 					text.add("empate");
 				}
 			} catch (Exception e) {
+				System.out.println("catch");
 				if (cartaJugador1 == null) {
 					ganador = j2;
 				}else {
