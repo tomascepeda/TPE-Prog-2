@@ -6,8 +6,6 @@ public abstract class Estrategia {
 	
 	private String nombre;
 	
-	
-	
 	public Estrategia(String nombre) {
 		this.nombre = nombre;
 	}
@@ -17,13 +15,7 @@ public abstract class Estrategia {
 		return this.nombre;
 	}
 	
-	// metodos abstractos
-	
 	
 	public abstract String obtenerEstrategia(Carta ca);
-	
-	
-	
-	
 	
 }

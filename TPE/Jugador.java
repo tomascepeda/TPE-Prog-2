@@ -1,8 +1,7 @@
 package TPE;
 
 import java.util.ArrayList;
-
-import Estrategias.Estrategia; // package estrategias
+import Estrategias.Estrategia; 
 
 public class Jugador {
 	
@@ -31,15 +30,7 @@ public class Jugador {
 	public void removeCarta(Carta c) {
 		mazo.removeCarta(c);
 	}
-	// Horrible
-	/*
-	public Atributo selectAtributo() {
-		int cant = mazo.getCarta(indiceCarta).getAtributos().size();
-		int random = (int) Math.floor((Math.random()*cant) + 1);
-		return mazo.getCarta(0).getAtributos().get(random - 1); // revisar
-	}
-	*/ 
-	// se puede cambiar en cualquier momento
+
 	public String elegirAtributo(Carta ca) {
 		return this.estrategia.obtenerEstrategia(ca);
 	}
@@ -60,9 +51,7 @@ public class Jugador {
 
 	@Override
 	public boolean equals(Object j) {
-		
 		return (this.getNombre().equals(((Jugador) j).getNombre())); // y que las cartas en posesion sean las mismas
-
 	}
 
 }
