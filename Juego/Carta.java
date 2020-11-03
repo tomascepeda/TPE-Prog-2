@@ -1,4 +1,4 @@
-package TPE;
+package Juego;
 
 import java.util.ArrayList;
 import Pocimas.Pocima;
@@ -55,6 +55,10 @@ public class Carta {
 	public String getNombre() {
 		return nombre;
 	}
+	
+	public String getAtributoNombre(int index) {
+		return this.atributos.get(index).getNombre();
+	}
 
 	public ArrayList<Atributo> getAtributos(){
 		return (ArrayList<Atributo>) atributos.clone();
@@ -84,6 +88,14 @@ public class Carta {
 			otherNombreAtributos.add(s.getNombre());
 		}
 		return thisNombreAtributos.containsAll(otherNombreAtributos);
+	}
+	
+	public ArrayList<String> getNombresAtributos(){
+		ArrayList<String> aux = new ArrayList<String>();
+		for (Atributo i : atributos) {
+			aux.add(i.getNombre());
+		}
+		return aux;
 	}
 	
 }//class

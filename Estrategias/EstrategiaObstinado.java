@@ -2,15 +2,15 @@ package Estrategias;
 
 import java.util.ArrayList;
 
-import TPE.Atributo;
-import TPE.Carta;
+import Juego.Atributo;
+import Juego.Carta;
 
 public class EstrategiaObstinado extends Estrategia {
 	private String nombreAtributo;
 
 	public EstrategiaObstinado(String nombre, String nombreAtributo) {
 		super(nombre);
-		this.nombreAtributo = nombreAtributo;
+		this.nombreAtributo = nombreAtributo.toLowerCase();
 	}
 
 	@Override

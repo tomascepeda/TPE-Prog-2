@@ -2,13 +2,13 @@ package Pocimas;
 
 import java.util.ArrayList;
 
-import TPE.Atributo;
+import Juego.Atributo;
 
-public class Cocktail extends Pocima {
+public class PocimaCocktail extends Pocima {
 	
 	private ArrayList<Pocima> pocimas;	
 
-	public Cocktail(String nombre, ArrayList<Pocima> pocimas) {
+	public PocimaCocktail(String nombre, ArrayList<Pocima> pocimas) {
 		super(nombre);
 		this.pocimas = pocimas;
 	}

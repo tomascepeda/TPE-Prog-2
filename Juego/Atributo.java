@@ -1,4 +1,4 @@
-package TPE;
+package Juego;
 
 public class Atributo{
 	
@@ -7,7 +7,7 @@ public class Atributo{
 	
 	public Atributo(String nombre, int valor) {
 		super();
-		this.nombre = nombre;
+		this.nombre = nombre.toLowerCase();
 		this.valor = valor;
 	}
 

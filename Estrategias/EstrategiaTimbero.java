@@ -2,8 +2,8 @@ package Estrategias;
 
 import java.util.ArrayList;
 
-import TPE.Atributo;
-import TPE.Carta;
+import Juego.Atributo;
+import Juego.Carta;
 
 public class EstrategiaTimbero extends Estrategia {
 	
@@ -13,13 +13,13 @@ public class EstrategiaTimbero extends Estrategia {
 
 	@Override
 	public String obtenerEstrategia(Carta ca) {
-		ArrayList<Atributo> atributos = new ArrayList<>();
-		atributos.addAll(ca.getAtributos()); 
+		ArrayList<String> atributos = new ArrayList<String>();
+		atributos.addAll(ca.getNombresAtributos()); 
 		int max = atributos.size()-1; 
 		int min = 0;
 		int range = max - min + 1;
 		int atributoRamdon = (int) (Math.random()* range)+min;
-		return atributos.get(atributoRamdon).getNombre();
+		return ca.getAtributoNombre(atributoRamdon);
 	}
 
 }

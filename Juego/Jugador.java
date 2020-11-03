@@ -1,4 +1,4 @@
-package TPE;
+package Juego;
 
 import java.util.ArrayList;
 import Estrategias.Estrategia; 

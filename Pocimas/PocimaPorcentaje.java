@@ -1,12 +1,12 @@
 package Pocimas;
 
-import TPE.Atributo;
+import Juego.Atributo;
 
-public class Fortalecedora extends Pocima {
+public class PocimaPorcentaje extends Pocima {
 
 	private int valor;
 	
-	public Fortalecedora(String nombre, int valor) {
+	public PocimaPorcentaje(String nombre, int valor) {
 		super(nombre);
 		this.valor = valor;
 	}

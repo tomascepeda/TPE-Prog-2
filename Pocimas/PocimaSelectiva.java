@@ -1,13 +1,13 @@
 package Pocimas;
 
-import TPE.Atributo;
+import Juego.Atributo;
 
-public class Selectiva extends Pocima {
+public class PocimaSelectiva extends Pocima {
 
 	private String atributo;
 	private int valor;
 	
-	public Selectiva(String nombre, String atributo, int valor) {
+	public PocimaSelectiva(String nombre, String atributo, int valor) {
 		super(nombre);
 		this.atributo = atributo;
 		this.valor = valor;

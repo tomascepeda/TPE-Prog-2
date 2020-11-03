@@ -1,6 +1,6 @@
 package Estrategias;
 
-import TPE.Carta;
+import Juego.Carta;
 
 public abstract class Estrategia {
 	

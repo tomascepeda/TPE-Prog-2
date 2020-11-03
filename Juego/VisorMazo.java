@@ -1,4 +1,4 @@
-package TPE;
+package Juego;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -31,7 +31,7 @@ public class VisorMazo {
                 	
                 	atributosStr = atributosStr + nombreAtributo + ": " +
                     atributos.getInt(nombreAtributo) + "; ";     
-                	Atributo a = new Atributo(nombreAtributo,atributos.getInt(nombreAtributo));
+                	Atributo a = new Atributo(nombreAtributo.toLowerCase(),atributos.getInt(nombreAtributo));
                 	c.addAtributo(a);
                 } // Termina de agregar atributos
                     

@@ -1,6 +1,6 @@
 package Pocimas;
 
-import TPE.Atributo;
+import Juego.Atributo;
 
 public class PocimaValorFijo extends Pocima{
 	
