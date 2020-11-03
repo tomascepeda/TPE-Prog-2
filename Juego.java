@@ -7,15 +7,15 @@ import Pocimas.Pocima;
 
 public class Juego {
 	
-	private Jugador j1, j2;
+	private Jugador jugador1, jugador2;
 	private Mazo mazo;
 	private ArrayList<Pocima> pocimas;
 	private ArrayList<String> text = new ArrayList<String>();
 	
 	public Juego(Jugador j1, Jugador j2) {
 		super();
-		this.j1 = j1;
-		this.j2 = j2;
+		this.jugador1 = j1;
+		this.jugador2 = j2;
 		String mazoPath = "./superheroes.json"; 
 		this.mazo = VisorMazo.armarMazo(mazoPath);
 		this.pocimas = new ArrayList<Pocima>();
@@ -29,13 +29,13 @@ public class Juego {
 		Collections.shuffle(pocimas);
 	}
 
-	public void jugar(Jugador jugador1, Jugador jugador2, int rondas) {
+	public void jugar(int rondas) {
 		
-		if(!mazo.isPar()) {
-			text.add("No se puede jugar no es par, cantidad de cartas: " + mazo.size());
+		if(!mazo.isPar() || rondas == 0) {
+			text.add("No se puede jugar");
 		}else {
 	
-			this.mazo.repartirCartas(j1, j2, this.pocimas);	
+			this.mazo.repartirCartas(jugador1, jugador2, this.pocimas);	
 		
 			Jugador ganador = null; 
 			int i = 0;

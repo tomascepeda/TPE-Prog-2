@@ -42,7 +42,7 @@ public class Main {
 		juego.addPocima(p8);
 		juego.addPocima(p9);
 		
-		juego.jugar(j1, j2, 200); 
+		juego.jugar(0); 
 		
 		ArrayList<String> log = juego.textoJuego();
 		
