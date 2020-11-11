@@ -7,15 +7,12 @@ public class Jugador {
 	
 	private String nombre;
 	private Mazo mazo;
-	private int indiceCarta;
 	private Estrategia estrategia;
 	
 	public Jugador(String nombre, Estrategia estrategia) {
 		this.nombre = nombre;
 		this.mazo = new Mazo();
-		this.indiceCarta = -1;
 		this.estrategia = estrategia;
-		
 	}
 	
 	public String getNombre() {
@@ -36,13 +33,7 @@ public class Jugador {
 	}
 	
 	public Carta getCarta() {
-		this.indiceCarta++;
-		Carta aux = mazo.getCarta(indiceCarta);
-		if(aux == null) {
-			this.indiceCarta = 0;
-			return mazo.getCarta(indiceCarta);
-		}else
-			return aux;
+		return mazo.getCarta();
 	}
 	
 	public int cantCartas() {

@@ -2,21 +2,19 @@ package Pocimas;
 
 import Juego.Atributo;
 
-public class PocimaSelectiva extends Pocima {
+public class PocimaSelectiva extends PocimaPorcentaje {
 
 	private String atributo;
-	private int valor;
 	
 	public PocimaSelectiva(String nombre, String atributo, int valor) {
-		super(nombre);
+		super(nombre, valor);
 		this.atributo = atributo;
-		this.valor = valor;
 	}
 
 	@Override
 	public int getValorResultante(Atributo a) {
 		if(a.getNombre().equals(this.atributo))
-			return a.getValor() + ((this.valor * a.getValor()) / 100);
+			return super.getValorResultante(a);
 		else return a.getValor();
 	}
 

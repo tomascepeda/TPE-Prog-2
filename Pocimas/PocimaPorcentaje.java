@@ -13,7 +13,8 @@ public class PocimaPorcentaje extends Pocima {
 
 	@Override
 	public int getValorResultante(Atributo a) {
-		return a.getValor() + ((this.valor * a.getValor()) / 100);
+		int valor_aux = a.getValor();
+		return valor_aux + (this.valor * valor_aux / 100);
 	}
 
 }

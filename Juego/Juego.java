@@ -12,12 +12,11 @@ public class Juego {
 	private ArrayList<Pocima> pocimas;
 	private ArrayList<String> text = new ArrayList<String>();
 	
-	public Juego(Jugador j1, Jugador j2) {
+	public Juego(Jugador j1, Jugador j2, Mazo m) {
 		super();
 		this.jugador1 = j1;
 		this.jugador2 = j2;
-		String mazoPath = "./superheroes.json"; 
-		this.mazo = VisorMazo.armarMazo(mazoPath);
+		this.mazo = m;
 		this.pocimas = new ArrayList<Pocima>();
 	}
 	
@@ -54,25 +53,10 @@ public class Juego {
 					String atributoSelecionado = ganadorRonda.elegirAtributo(ganadorRonda.getCarta());
 				
 					text.add("El jugador " + ganadorRonda.getNombre() + " selecciona competir por el atributo: " + atributoSelecionado);
-					text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributoSelecionado + " " + cartaJugador1.getValor(atributoSelecionado));
+					text.add("La carta de " + j1.getNombre() + " es " + cartaJugador1.getNombre() + " con " + atributoSelecionado + " " + cartaJugador1.getLog(atributoSelecionado));
+					text.add("La carta de " + j2.getNombre() + " es " + cartaJugador2.getNombre() + " con " + atributoSelecionado + " " + cartaJugador2.getLog(atributoSelecionado));
 					
-					//logica de implementacion de pocima para el j1
-					if(cartaJugador1.getPocima() != null && !(cartaJugador1.getPocima().isAplicada())) {
-						cartaJugador1.getPocima().fueUsada();
-						text.add("Se aplico pocima " + cartaJugador1.getPocima().getNombre() + ", valor resultante " + cartaJugador1.getPocima().getValorResultante(cartaJugador1.getAtributoObj(atributoSelecionado)));
-						cartaJugador1.getAtributoObj(atributoSelecionado).setValor(cartaJugador1.getPocima().getValorResultante(cartaJugador1.getAtributoObj(atributoSelecionado)));
-					}
-					
-					text.add("La carta de " + j2.getNombre() + " es " + cartaJugador2.getNombre() + " con " + atributoSelecionado + " " + cartaJugador2.getValor(atributoSelecionado));
-					
-					//logica de implementacion de pocima para el j2
-					if(cartaJugador2.getPocima() != null && !(cartaJugador2.getPocima().isAplicada())) {
-						cartaJugador2.getPocima().fueUsada();
-						text.add("Se aplico pocima " + cartaJugador2.getPocima().getNombre() + ", valor resultante " + cartaJugador2.getPocima().getValorResultante(cartaJugador2.getAtributoObj(atributoSelecionado)));
-						cartaJugador2.getAtributoObj(atributoSelecionado).setValor(cartaJugador2.getPocima().getValorResultante(cartaJugador2.getAtributoObj(atributoSelecionado)));
-					}
-					
-					//se comprueba el ganador de la ronda (si es el caso, tiene en cuenta el valor modificado por la pocima)
+					//se comprueba el ganador de la ronda 
 					if (cartaJugador1.getValor(atributoSelecionado) > cartaJugador2.getValor(atributoSelecionado)) {
 						j1.addCarta(cartaJugador2);
 						j2.removeCarta(cartaJugador2);

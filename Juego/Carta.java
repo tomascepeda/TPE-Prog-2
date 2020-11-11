@@ -31,10 +31,26 @@ public class Carta {
 	}
 	
 	public int getValor(String nombreAtributo) {
+		if(this.pocima != null)
+			return this.getValorOriginal(nombreAtributo);
+		else
+			return this.getValorModificado(nombreAtributo);
+	}
+	
+	private int getValorOriginal(String nombreAtributo) {
 		int valor = 0;
 		for (Atributo atributo : atributos) {
-			if(atributo.getNombre().equals(nombreAtributo)) 
+			if(atributo.getNombre().equals(nombreAtributo))
 				valor = atributo.getValor();
+		}
+		return valor;
+	}
+	
+	private int getValorModificado(String nombreAtributo) {
+		int valor = 0;
+		for (Atributo atributo : atributos) {
+			if(atributo.getNombre().equals(nombreAtributo) && pocima != null)
+				valor = pocima.getValorResultante(atributo);
 		}
 		return valor;
 	}
@@ -96,6 +112,14 @@ public class Carta {
 			aux.add(i.getNombre());
 		}
 		return aux;
+	}
+	
+	public String getLog(String nombreAtributo) {
+		String log = "" + this.getValorOriginal(nombreAtributo);
+		if(this.pocima != null) {
+			log += ", se aplico pocima" + pocima.getNombre() +  " valor resultante " + this.getValorModificado(nombreAtributo);
+		}
+		return log;
 	}
 	
 }//class

@@ -8,6 +8,8 @@ import Pocimas.*;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		//sebastian.vallejos@isistan.unicen.edu.ar
 	
 		Estrategia es1 = new EstrategiaObstinado("Obstinado", "fuerza");
 		Estrategia es2 = new EstrategiaAmbicioso("Ambicioso");
@@ -30,7 +32,10 @@ public class Main {
 	    pocimasAux.add(p5); pocimasAux.add(p6); pocimasAux.add(p7); pocimasAux.add(p8);
 	    PocimaCocktail p9 = new PocimaCocktail("cocktail", pocimasAux);
 		
-		Juego juego = new Juego(j1, j2);
+	    String mazoPath = "./superheroes.json"; 
+	    Mazo mazo = VisorMazo.armarMazo(mazoPath);
+	    
+		Juego juego = new Juego(j1, j2, mazo);
 		juego.addPocima(p1);
 		juego.addPocima(p2);
 		juego.addPocima(p5);

@@ -17,7 +17,7 @@ public class EstrategiaAmbicioso extends Estrategia {
 		ArrayList<String> nombresAtributos = new ArrayList<String>();
 		nombresAtributos.addAll(ca.getNombresAtributos());
 		String nombreMayor = "";
-		int mayor = 0;
+		int mayor = -9999;
 		for (String elem : nombresAtributos) {
 		    String nombreAux = elem;
 			int mayorAux = ca.getValor(elem);
@@ -25,6 +25,11 @@ public class EstrategiaAmbicioso extends Estrategia {
 				nombreMayor = nombreAux;
 				mayor = mayorAux;
 			}
+		}
+		if(nombreMayor.isEmpty()) {
+			System.out.println(ca.getNombre());
+			System.out.println(ca.getAtributos().toString());
+			System.out.println("ME ROMPI NOOOOOOOO");
 		}
 		return nombreMayor;
 	}

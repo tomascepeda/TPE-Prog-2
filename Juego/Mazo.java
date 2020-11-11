@@ -33,12 +33,11 @@ public class Mazo {
 		cartas.remove(c);
 	}
 	
-	public Carta getCarta(int index) {
-		try {
-			return cartas.get(index);
-		} catch (Exception e) {
-			return null;
-		}
+	public Carta getCarta() {
+		Carta aux = cartas.get(0);
+		cartas.add(aux);
+		cartas.remove(0);
+		return aux;
 	}
 
 	private void barajarCartas() {
@@ -57,7 +56,7 @@ public class Mazo {
 	public void repartirCartas(Jugador j1, Jugador j2, ArrayList<Pocima> pocimas) {
 		boolean cartaDada = false;
 		for (int i = 0; i <this.size(); i++) {
-		Carta c = new Carta(this.getCarta(i).getNombre(), this.getCarta(i).getAtributos(), this.getCarta(i).getPocima());
+		Carta c = new Carta(this.getCarta().getNombre(), this.getCarta().getAtributos(), this.getCarta().getPocima());
 			if (!pocimas.isEmpty()) {
 				int rdm = (int) Math.random()*pocimas.size();
 				c.setPocima(pocimas.get(rdm));

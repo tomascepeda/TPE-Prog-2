@@ -15,11 +15,11 @@ public class PocimaCocktail extends Pocima {
 
 	@Override
 	public int getValorResultante(Atributo a) {
-		int resultado = 0;
+		Atributo aux = new Atributo(a.getNombre(), a.getValor());
 		for (Pocima i : pocimas) {
-			resultado += i.getValorResultante(a);
+			aux.setValor(i.getValorResultante(aux));
 		}
-		return resultado;
+		return aux.getValor();
 	}
 
 }
