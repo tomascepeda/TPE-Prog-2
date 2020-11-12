@@ -31,7 +31,7 @@ public class Carta {
 	}
 	
 	public int getValor(String nombreAtributo) {
-		if(this.pocima != null)
+		if(this.pocima == null)
 			return this.getValorOriginal(nombreAtributo);
 		else
 			return this.getValorModificado(nombreAtributo);

@@ -34,10 +34,14 @@ public class Mazo {
 	}
 	
 	public Carta getCarta() {
-		Carta aux = cartas.get(0);
-		cartas.add(aux);
-		cartas.remove(0);
-		return aux;
+		try {
+			Carta aux = cartas.get(0);			
+			cartas.add(aux);
+			cartas.remove(0);
+			return aux;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	private void barajarCartas() {

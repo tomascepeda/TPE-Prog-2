@@ -44,7 +44,7 @@ public class Main {
 		juego.addPocima(p8);
 		juego.addPocima(p9);
 		
-		juego.jugar(20); 
+		juego.jugar(20); //run
 		
 		ArrayList<String> log = juego.textoJuego();
 		
