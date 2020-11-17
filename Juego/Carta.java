@@ -109,7 +109,7 @@ public class Carta {
 	public String getLog(String nombreAtributo) {
 		String log = "" + this.getValorOriginal(nombreAtributo);
 		if(this.pocima != null) {
-			log += ", se aplico pocima" + pocima.getNombre() +  " valor resultante " + this.getValorModificado(nombreAtributo);
+			log += ", se aplico pocima " + pocima.getNombre() +  " valor resultante " + this.getValorModificado(nombreAtributo);
 		}
 		return log;
 	}
