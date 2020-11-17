@@ -95,15 +95,7 @@ public class Carta {
 	}
 	
 	public boolean tieneAtributos(Carta c) {
-		ArrayList<String> thisNombreAtributos = new ArrayList<String>();
-		for (Atributo i : this.getAtributos()) {
-			thisNombreAtributos.add(i.getNombre());
-		}
-		ArrayList<String> otherNombreAtributos = new ArrayList<String>();
-		for (Atributo s : c.getAtributos()) {
-			otherNombreAtributos.add(s.getNombre());
-		}
-		return thisNombreAtributos.containsAll(otherNombreAtributos);
+		return this.getNombresAtributos().containsAll(c.getNombresAtributos());
 	}
 	
 	public ArrayList<String> getNombresAtributos(){
