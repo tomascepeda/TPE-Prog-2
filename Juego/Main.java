@@ -8,8 +8,6 @@ import Pocimas.*;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		//sebastian.vallejos@isistan.unicen.edu.ar
 	
 		Estrategia es1 = new EstrategiaObstinado("Obstinado", "fuerza");
 		Estrategia es2 = new EstrategiaAmbicioso("Ambicioso");
